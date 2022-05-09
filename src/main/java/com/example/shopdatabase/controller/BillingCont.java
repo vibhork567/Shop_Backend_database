@@ -28,7 +28,7 @@ public class BillingCont {
     {
         return billRepo.findById(billId);
     }
-    @PostMapping("/children")
+    @PostMapping("/add")
     public Billing saveChildDetails(@RequestBody Billing child) {
         return billRepo.save(child);
     }

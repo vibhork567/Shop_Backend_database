@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/billing")
+@RequestMapping("/product")
 public class ProductCont {
     @Autowired
     private ProductRepo prodRepo;
@@ -28,7 +28,7 @@ public class ProductCont {
     {
         return prodRepo.findById(billId);
     }
-    @PostMapping("/children")
+    @PostMapping("/add")
     public Product saveChildDetails(@RequestBody Product child) {
         return prodRepo.save(child);
     }

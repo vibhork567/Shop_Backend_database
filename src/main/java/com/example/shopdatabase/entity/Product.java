@@ -26,6 +26,18 @@ public class Product {
     @OneToOne
     private CreditDebit credeb;
 
+    @ManyToOne
+    @JoinColumn(name = "supplier_supplier_id")
+    private Supplier supplier;
+
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
+
     public Product() {
     }
 

@@ -22,8 +22,21 @@ public class Billing {
     private int SPAfterGST;
     @OneToOne
     private CreditDebit credeb;
+
     @ManyToOne
-    private Customer cust;
+    @JoinColumn(name = "customer_customer_id")
+    private Customer customer;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    //@ManyToOne
+    //private Customer cust;
 
     public int getBillId() {
         return billId;
@@ -113,11 +126,11 @@ public class Billing {
         this.credeb = credeb;
     }
 
-    public Customer getCust() {
+    /*public Customer getCust() {
         return cust;
     }
 
     public void setCust(Customer cust) {
         this.cust = cust;
-    }
+    }*/
 }

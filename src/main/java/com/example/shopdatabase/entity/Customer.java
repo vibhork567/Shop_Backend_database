@@ -19,6 +19,7 @@ public class Customer {
     private String Pname;
     private int AmtPaid;
     private int AmtLeft;
+
     @OneToMany(mappedBy = "customer")
     private List<Billing> bill = new ArrayList<>();
     public int getCustomerId() {

@@ -25,7 +25,7 @@ public class CreditDebitCont {
     {
         return credebRepo.findById(credebId);
     }
-    @PostMapping("/creditdebit")
+    @PostMapping("/add")
     public CreditDebit saveChildDetails(@RequestBody CreditDebit child) {
         return credebRepo.save(child);
     }

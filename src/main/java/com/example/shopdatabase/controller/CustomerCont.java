@@ -28,7 +28,7 @@ public class CustomerCont {
     {
         return custRepo.findById(custId);
     }
-    @PostMapping("/customeradd")
+    @PostMapping("/add")
     public Customer saveChildDetails(@RequestBody Customer child) {
         return custRepo.save(child);
     }

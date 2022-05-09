@@ -10,7 +10,7 @@ public class User {
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
-    private String role;
+    private String shopName;
     @Column(nullable = false)
     private boolean isActive;
 
@@ -19,11 +19,11 @@ public class User {
 
     }
 
-    public User(Long userId, String username, String password, String role, boolean isActive) {
+    public User(Long userId, String username, String password, String shopName, boolean isActive) {
         this.userId = userId;
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.shopName = shopName;
         this.isActive = isActive;
     }
 
@@ -51,12 +51,12 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public String getShopName() {
+        return shopName;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setShopName(String role) {
+        this.shopName = role;
     }
 
     public boolean isActive() {
