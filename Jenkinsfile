@@ -1,36 +1,49 @@
 pipeline {
-		agent any 
+	agent any 
+	environment {
+	    MYSQL_HOST="localhost"
+	    MYSQL_PORT=3306
+	    MYSQL_USER="root"
+	}	
     stages {
-        stage('Git Pull') {
+        
+        
+        
+        
+        
+        
+        stage('Backend Git Pull') {
             steps {
-				git url: 'https://github.com/vibhorkedawat/Calculator_Mini_Project.git',
-				branch: 'main',
-                credentialsId: 'vibtoken'
+				git url: 'https://github.com/vibhorkedawat/Shop_Backend_database.git',
+				branch: 'master',
+                credentialsId: 'github'
             }
         }
-        stage('Maven Build and Test') {
+        
+        stage('Backend Maven Build and Test') {
             steps {
                 sh 'mvn clean install'
             }
         }
-        stage('Docker build image') {
+        stage('Backend build docker image') {
             steps {
-                sh 'docker build -t vib123/calculator_mini_project:ver1 .'
+                sh 'docker build -t vib123/spe_major:ver1 .'
             }
         }
-        stage('Publish Docker Images') {
+        stage('Publish Backend Docker Image') {
             steps {
                 withDockerRegistry([ credentialsId: "dockerid", url: "" ]) {
-                    sh 'docker push vib123/calculator_mini_project:ver1'
+                    sh 'docker push vib123/spe_major:ver1'
                 }
             }
         }
         
         stage('Ansible Deploy') {
-             steps {
-                  ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'p2.yml' ,sudoUser: null
-             }
+                     steps {
+                          ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'p2.yml' ,sudoUser: null
+                     }
         }
+            
     }
     
     post {
@@ -39,3 +52,4 @@ pipeline {
         }
     }
 }
+
