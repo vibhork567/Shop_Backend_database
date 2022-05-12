@@ -6,6 +6,6 @@
   tasks:
     - name: Deploy Army
       docker_container:
-        name: calculator_container
-        image: vib123/calculator_mini_project:ver1
+        name: shop_container
+        image: vib123/spe_major:ver1
         state: present
