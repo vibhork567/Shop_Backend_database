@@ -1,0 +1,31 @@
+version: '3'
+services:
+
+  db:
+    image: "mysql:latest"
+    container_name: shop_database
+    volumes:
+      - mysql-data:/var/lib/mysql6/data2
+    ports:
+      - 3308:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=Mysql1@
+
+  backend:
+    image: "vib123/spe_major:ver1"
+    container_name: shop_backend
+    restart: on-failure
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/shopdatabase?createDatabaseIfNotExist=true
+    ports:
+      - 8090:8090
+
+  frontend:
+    image: "vib123/nrcfrontend:ver1"
+    container_name: nrc_frontend
+    ports:
+      - 4200:3000
+
+
+volumes:
+  mysql-data:
