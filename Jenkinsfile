@@ -27,13 +27,13 @@ pipeline {
         }
         stage('Backend build docker image') {
             steps {
-                sh 'docker build -t vib123/spe_major:ver1 .'
+                sh 'docker build -t vib123/spe_major_backend:ver1 .'
             }
         }
         stage('Publish Backend Docker Image') {
             steps {
                 withDockerRegistry([ credentialsId: "dockerid", url: "" ]) {
-                    sh 'docker push vib123/spe_major:ver1'
+                    sh 'docker push vib123/spe_major_backend:ver1'
                 }
             }
         }

@@ -12,7 +12,7 @@ services:
       - MYSQL_ROOT_PASSWORD=Mysql1@
 
   backend:
-    image: "vib123/spe_major:ver1"
+    image: "vib123/spe_major_backend:ver1"
     container_name: shop_backend
     restart: on-failure
     environment:
@@ -21,8 +21,8 @@ services:
       - 8090:8090
 
   frontend:
-    image: "vib123/calculator_mini_project"
-    container_name: nrc_frontend
+    image: "vib123/spe_major:ver1"
+    container_name: shop_frontend
     ports:
       - 4200:3000
 

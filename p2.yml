@@ -7,5 +7,5 @@
     - name: Deploy Army
       docker_container:
         name: shop_container
-        image: vib123/spe_major:ver1
+        image: vib123/spe_major_backend:ver1
         state: present
